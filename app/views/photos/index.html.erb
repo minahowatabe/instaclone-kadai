@@ -1,2 +1,23 @@
-<h1>Blogs#index</h1>
-<p>Find me in app/views/blogs/index.html.erb</p>
+<h1>photo lists</h1>
+
+<p><%= notice %></p>
+
+<table>
+  <tr>
+    <th>image</th>
+    <th>comment</th>
+  </tr>
+
+<% @photos.each do |photo| %>
+  <tr>
+    <td><%= photo.image %></td>
+    <td><%= photo.content %></td>
+    
+    <td><%= link_to '詳細を確認する', photo_path(photo.id) %></td>
+    <td><%= link_to "photoを編集する", edit_photo_path(photo.id) %></td>
+    <td><%= link_to 'photoを削除する', photo_path(photo.id), method: :delete ,data: { confirm: '本当に削除していいですか？' } %></td>
+  </tr>
+<% end %>
+</table>
+
+<%= link_to 'post new photo', new_photo_path %>

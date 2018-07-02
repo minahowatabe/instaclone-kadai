@@ -1,0 +1,16 @@
+<h1>photo</h1>
+<p>image: <%= @photo.image %></p>
+<p>comment: <%= @photo.content %></p>
+
+
+<% unless @photo.user == current_user %>
+  <% if @favorite.present? %>
+    <%= link_to 'DELETE from my favorite', favorite_path(id: @favorite.id), method: :delete, class: 'btn btn-danger' %>
+  <% else %>
+    <%= link_to 'ADD my favorite', favorites_path(photo_id: @photo.id), method: :post, class: 'btn btn-primary' %>
+  <% end %>
+<% end %>
+
+<br>
+
+<%= link_to "Back to photo Lists", photos_path, class: "btn btn-primary" %>

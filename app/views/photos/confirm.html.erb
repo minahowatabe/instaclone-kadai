@@ -1,0 +1,18 @@
+<h3>CONFIRM new post</h3>
+<h4>Is it ok?</h4>
+
+<%= form_with(model: @photo, local: true) do |form| %>
+  <%= form.hidden_field :image %>
+  <%= form.hidden_field :content %>
+  
+  <p>image:<%= @photo.image %></p>
+  <p>comment:<%= @photo.content %></p>
+  <%= form.submit 'POST' %>
+<% end %>
+
+<%= form_with(model: @photo, url: new_photo_path, local: true, method: 'get') do |form| %>
+  <%= form.hidden_field :image %>
+  <%= form.hidden_field :content %>
+  <%= form.submit 'back', name: 'back' %>
+<% end %>
+  
