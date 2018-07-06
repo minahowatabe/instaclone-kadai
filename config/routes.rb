@@ -5,9 +5,9 @@ Rails.application.routes.draw do
   if Rails.env.development?
     mount LetterOpenerWeb::Engine, at: "/inbox"
   end
-  resources :favorites, only: [:create, :destroy] 
+  resources :favorites, only: [:index, :create, :destroy] 
   resources :sessions, only: [:new, :create, :destroy]
-  resources :users, only: [:new, :create,:show] 
+  resources :users, only: [:new, :create, :show] 
   resources :photos do    
    collection do
      post :confirm

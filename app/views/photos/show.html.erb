@@ -1,7 +1,28 @@
-<h1>photo</h1>
-<p>image: <%= @photo.image %></p>
-<p>comment: <%= @photo.content %></p>
+<!--<h1>photo</h1>-->
+<!--<p>image: <%#= @photo.image %></p>-->
+<!--<p>comment: <%#= @photo.content %></p>-->
 
+<h1 class="lists_title container-fluid">photo&comment</h1>
+
+<article>
+  
+ <div class="shows">
+  <div class = "row">
+
+   <div class="imageup col-md-11">
+    <ul class="row">
+      <li class="col-offset-md-1 col-md-5">image: <%= image_tag @photo.image %></li>
+      <li class="col-md-6" >Content: <%= @photo.content %></li>
+    </ul>
+   </div>
+   <!--<div class="col-offset-md-3 col-md-6">-->
+   <!-- <p>Image:</p>-->
+   <!--   <%#= image_tag @photo.image %>-->
+   <!-- </p>-->
+   <!--</div>-->
+  </div>
+ </div>
+</article>
 
 <% unless @photo.user == current_user %>
   <% if @favorite.present? %>
@@ -14,3 +35,4 @@
 <br>
 
 <%= link_to "Back to photo Lists", photos_path, class: "btn btn-primary" %>
+

@@ -1,23 +1,35 @@
-<h1>photo lists</h1>
+<h1 class="lists_title container-fluid">photo Lists</h1>
 
-<p><%= notice %></p>
+<p class = "notice"></p>
 
-<table>
-  <tr>
-    <th>image</th>
-    <th>comment</th>
-  </tr>
+<div class="container">
+ <div class="row">
+   <% if @user_id = current_user.id %>
+     <% @photos.each do |photo| %>
+       <div class="photo-panel col-md-6">
+         <h2><%= image_tag photo.image %></h2>
+         <p><%= photo.content %></p>
+     
+       <% if photo.user_id == current_user.id %>
+          <div class="photo-links">
+            <%= link_to 'Show', photo, class: 'btn btn-default' %>
+            <%= link_to 'Edit', edit_photo_path(photo), class: 'btn btn-info' %> |
+            <%= link_to 'Delete', photo, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-danger' %>
+          </div>
+       <% else %>
+            <div class="photo-links">
+              <%= link_to 'Show', photo, class: 'btn btn-default' %>
+            </div>
+       <% end%>
+       </div>
+     <% end%>
+   <% end%>
+ </div>
+</div>   
+<br>
 
-<% @photos.each do |photo| %>
-  <tr>
-    <td><%= photo.image %></td>
-    <td><%= photo.content %></td>
-    
-    <td><%= link_to '詳細を確認する', photo_path(photo.id) %></td>
-    <td><%= link_to "photoを編集する", edit_photo_path(photo.id) %></td>
-    <td><%= link_to 'photoを削除する', photo_path(photo.id), method: :delete ,data: { confirm: '本当に削除していいですか？' } %></td>
-  </tr>
-<% end %>
-</table>
+<div>
+<%= link_to 'POST new photo', new_photo_path, class: "btn btn-primary" %>
+</div>
 
-<%= link_to 'post new photo', new_photo_path %>
+

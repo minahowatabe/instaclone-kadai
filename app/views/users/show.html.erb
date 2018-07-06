@@ -1,3 +1,12 @@
-<h1><%= @user.name %>のページ</h1>
+<div class = "userpage">
 
-<p>メールアドレス: <%= @user.email %></p>
+  <h1 class ="mypage"> USERNAME:<%= @user.name %></h1>
+  <h4>メールアドレス: <%= @user.email %></h4>
+  <br>
+  <h3>you are logged-in now!</h3>
+  <br>
+
+  <%= link_to 'POST new photo', new_photo_path, class: "btn btn-primary" %>
+  <%= link_to 'back to Lists', photos_path, class: "btn btn-primary" %>
+  <%= link_to "favorite lists", favorites_path, class: "btn btn-primary" %>
+</div>

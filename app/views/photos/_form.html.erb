@@ -1,7 +1,7 @@
 <%= form_with(model: @photo, local: true, url: choose_new_or_edit) do |form| %>
   <% if @photo.errors.any? %>
     <div id="error_explanation">
-      <h2><%= @photo.errors.count %>件のエラーがあります。</h2>
+      <h4><%= @photo.errors.count %>件のエラーがあります。</h4>
       <ul>
 
       <% @photo.errors.full_messages.each do |msg| %>
@@ -15,11 +15,13 @@
     <%= form.label :image %>
     <%= form.file_field :image %>
   </div>
+  <br>
   <div class="photo_post">
     <%= form.label :content %>
-    <%= form.text_field :content %>
+    <%= form.text_field :content, :size=>"50*20"%>
   </div>
-  <%= form.submit %>
+  <%= form.submit :class=>"btn" %>
 <% end %>
+<br>
 
-<%= link_to "Back to photo lists", photos_path %>
+<%= link_to "Back to photo Lists", photos_path, class: "btn btn-primary" %>

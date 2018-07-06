@@ -4,15 +4,15 @@
 <%= form_with(model: @photo, local: true) do |form| %>
   <%= form.hidden_field :image %>
   <%= form.hidden_field :content %>
-  
-  <p>image:<%= @photo.image %></p>
-  <p>comment:<%= @photo.content %></p>
+<div class ="imageup">  
+  <h4 class ="imageup"><%= image_tag(@photo.image) %></h4>
+  <h4>comment: 　　<%= @photo.content %></h4>
   <%= form.submit 'POST' %>
 <% end %>
-
+<!--<div class = "photo-links">-->
 <%= form_with(model: @photo, url: new_photo_path, local: true, method: 'get') do |form| %>
-  <%= form.hidden_field :image %>
+  <%= form.hidden_field :image_cache %>
   <%= form.hidden_field :content %>
-  <%= form.submit 'back', name: 'back' %>
+  <%= form.submit 'back' %>
 <% end %>
-  
+</div>  
