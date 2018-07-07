@@ -2,7 +2,7 @@
 <h4>Is it ok?</h4>
 
 <%= form_with(model: @photo, local: true) do |form| %>
-  <%= form.hidden_field :image %>
+  <%= form.hidden_field :image_cache %>
   <%= form.hidden_field :content %>
 <div class ="imageup">  
   <h4 class ="imageup"><%= image_tag(@photo.image) %></h4>
